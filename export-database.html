@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Export Tool</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #059669;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+    }
+    .success {
+      background: #d1fae5;
+      border-left-color: #10b981;
+    }
+    .error {
+      background: #fee2e2;
+      border-left-color: #ef4444;
+    }
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      max-height: 400px;
+    }
+    h1 {
+      color: #1f2937;
+      margin-bottom: 10px;
+    }
+    .info {
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio Database Export Tool</h1>
+    <p class="info">Click the buttons below to export your database tables. Each export will download as a JSON file you can save on your computer.</p>
+
+    <div>
+      <button onclick="exportTable('projects')">Export Projects</button>
+      <button onclick="exportTable('project_documentation_steps')">Export Documentation Steps</button>
+      <button onclick="exportTable('experiences')">Export Experiences</button>
+      <button onclick="exportTable('learning_milestones')">Export Learning Milestones</button>
+    </div>
+
+    <button onclick="exportAll()" style="background: #3b82f6; margin-top: 20px;">Export All Tables (Complete Backup)</button>
+
+    <div id="status"></div>
+    <pre id="output" style="display: none;"></pre>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://uqcdrwxyfqwtoaklreap.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxY2Ryd3h5ZnF3dG9ha2xyZWFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MDg2NzcsImV4cCI6MjA4NTI4NDY3N30.9iNBfskAhOo2VXzQsa0hTDlcauxb9xSFX0acbkkfh9E';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    function showStatus(message, type = 'info') {
+      const statusDiv = document.getElementById('status');
+      statusDiv.className = `status ${type}`;
+      statusDiv.innerHTML = message;
+      statusDiv.style.display = 'block';
+    }
+
+    function downloadJSON(data, filename) {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    async function exportTable(tableName) {
+      showStatus(`Exporting ${tableName}...`, 'info');
+
+      try {
+        const { data, error } = await supabase
+          .from(tableName)
+          .select('*');
+
+        if (error) throw error;
+
+        downloadJSON(data, `${tableName}_backup_${new Date().toISOString().split('T')[0]}.json`);
+        showStatus(`✓ Successfully exported ${data.length} records from ${tableName}`, 'success');
+
+        // Show preview
+        document.getElementById('output').style.display = 'block';
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        showStatus(`✗ Error exporting ${tableName}: ${error.message}`, 'error');
+      }
+    }
+
+    async function exportAll() {
+      showStatus('Exporting all tables...', 'info');
+
+      const tables = ['projects', 'project_documentation_steps', 'experiences', 'learning_milestones'];
+      const allData = {};
+
+      try {
+        for (const table of tables) {
+          const { data, error } = await supabase.from(table).select('*');
+          if (error) throw error;
+          allData[table] = data;
+        }
+
+        downloadJSON(allData, `portfolio_complete_backup_${new Date().toISOString().split('T')[0]}.json`);
+
+        const totalRecords = Object.values(allData).reduce((sum, records) => sum + records.length, 0);
+        showStatus(`✓ Successfully exported complete backup (${totalRecords} total records)`, 'success');
+
+        // Show preview
+        document.getElementById('output').style.display = 'block';
+        document.getElementById('output').textContent = JSON.stringify(allData, null, 2);
+      } catch (error) {
+        showStatus(`✗ Error during backup: ${error.message}`, 'error');
+      }
+    }
+  </script>
+</body>
+</html>

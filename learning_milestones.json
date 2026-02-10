@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2ad1f085-26fc-4a98-8c41-58cb47347ae2",
+    "category": "security_plus",
+    "title": "CompTIA Security+ Certification",
+    "description": "Studying for the CompTIA Security+ exam to validate foundational cybersecurity knowledge and skills",
+    "progress_percentage": 75,
+    "status": "in_progress",
+    "last_updated": "2026-01-29T21:59:54.615199+00:00",
+    "metadata": {},
+    "created_at": "2026-01-29T21:59:54.615199+00:00"
+  },
+  {
+    "id": "232b1c6a-6c72-4de5-8f29-b762e2f5ff82",
+    "category": "tryhackme",
+    "title": "TryHackMe Training",
+    "description": "Gaining real-world cybersecurity skills through hands-on training rooms and challenges on TryHackMe.com",
+    "progress_percentage": 25,
+    "status": "in_progress",
+    "last_updated": "2026-01-29T21:59:54.615199+00:00",
+    "metadata": {},
+    "created_at": "2026-01-29T21:59:54.615199+00:00"
+  },
+  {
+    "id": "aa8c6c1b-e60b-4b0d-bb51-b3fb846e96aa",
+    "category": "python",
+    "title": "CS50 Python Programming",
+    "description": "Learning Python programming fundamentals through Harvard's CS50 course on EdX.org",
+    "progress_percentage": 40,
+    "status": "in_progress",
+    "last_updated": "2026-01-29T21:59:54.615199+00:00",
+    "metadata": {},
+    "created_at": "2026-01-29T21:59:54.615199+00:00"
+  },
+  {
+    "id": "e00dc1de-f604-4437-964d-307dfd38b1eb",
+    "category": "aws",
+    "title": "AWS Cloud Training",
+    "description": "Taking advantage of free AWS training to build cloud computing skills and avoid cloud ignorance",
+    "progress_percentage": 20,
+    "status": "in_progress",
+    "last_updated": "2026-01-29T21:59:54.615199+00:00",
+    "metadata": {},
+    "created_at": "2026-01-29T21:59:54.615199+00:00"
+  }
+]

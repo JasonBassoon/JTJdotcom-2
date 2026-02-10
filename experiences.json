@@ -1,0 +1,53 @@
+[
+  {
+    "id": "e0a3b244-fff0-43bf-92c9-d7cb15061721",
+    "company": "US Marine Corps",
+    "position": "Communications Specialist",
+    "description": "Served as a communications specialist with experience in network operations and security.",
+    "start_date": "January 2015",
+    "end_date": "January 2019",
+    "location": "Camp Lejeune, NC",
+    "highlights": [
+      "Managed secure communications systems and network infrastructure",
+      "Maintained operational security protocols and procedures",
+      "Provided technical support for mission-critical communications",
+      "Worked in fast-paced, high-pressure environments"
+    ],
+    "order_index": 1,
+    "created_at": "2026-01-29T22:00:10.835528+00:00"
+  },
+  {
+    "id": "e6ea47ed-d572-4835-afc0-247646ebf78f",
+    "company": "Tech Support Services",
+    "position": "IT Support Technician",
+    "description": "Provided technical support and troubleshooting for various hardware and software issues.",
+    "start_date": "March 2019",
+    "end_date": "December 2020",
+    "location": "Remote",
+    "highlights": [
+      "Diagnosed and resolved technical issues for 50+ users daily",
+      "Maintained and updated system documentation",
+      "Assisted with network administration and user account management",
+      "Improved ticket resolution time by 30%"
+    ],
+    "order_index": 2,
+    "created_at": "2026-01-29T22:00:10.835528+00:00"
+  },
+  {
+    "id": "7dc2cef1-44c1-4d4e-816e-45a11e5a9886",
+    "company": "Self-Employed",
+    "position": "Cybersecurity Student & Lab Builder",
+    "description": "Building hands-on cybersecurity skills through home lab projects and continuous learning.",
+    "start_date": "January 2021",
+    "end_date": null,
+    "location": "Remote",
+    "highlights": [
+      "Built comprehensive home SOC lab with ELK Stack for security monitoring",
+      "Implemented Linux system hardening following CIS benchmarks",
+      "Developing detection rules and security monitoring capabilities",
+      "Pursuing CompTIA Security+ certification"
+    ],
+    "order_index": 3,
+    "created_at": "2026-01-29T22:00:10.835528+00:00"
+  }
+]
