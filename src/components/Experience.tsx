@@ -6,6 +6,7 @@ const experiences = [
     position: "Early Responsibility and Work Ethic",
     company: "Early Development",
     start_date: "Elementary School",
+    end_date: "Jr. High",
     location: "Meadows Place, TX",
     description: "Before fifth grade, I served as a student crossing guard at my elementary school, helping direct traffic and ensure the safety of younger students. At the time, this responsibility was entrusted to students; today it is typically handled by paid adults. This role established early lessons in accountability, trust, and responsibility for others. Shortly after, I became a Houston Chronicle newspaper carrier. This required waking up around 5:00 a.m. daily to deliver newspapers by bicycle throughout my neighborhood, regardless of weather. I was also responsible for collecting overdue payments from customers, an unusual level of financial and interpersonal responsibility for a child. These experiences reinforced discipline, reliability, and follow-through. I was also active in Cub Scouts through Webelos, reinforcing citizenship, teamwork, responsibility, and self-discipline.",
     highlights: ["Accountability", "Discipline", "Reliability", "Financial Responsibility", "Customer Service"]
