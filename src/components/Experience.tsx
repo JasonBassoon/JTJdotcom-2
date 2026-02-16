@@ -46,6 +46,7 @@ const experiences = [
     position: "Commercial Diving and Non-Destructive Testing",
     company: "Technical Inspection",
     start_date: "Mid-1990's and Mid-2000's",
+    end_date: null,
     location: "14+ States",
     description: "After the Navy, I attended The Ocean Corporation and trained as a commercial diver while studying non-destructive testing (NDT). I gained experience in Ultrasonic Testing (UT), Magnetic Particle Testing (MT), Dye Penetrant Testing (PT), and Eddy Current Testing (ECT). I worked in refineries, chemical plants, pipeline terminals, tank farms, nuclear facilities, and on Alaska's North Slope. I spent extended time at the Palo Verde Nuclear Generating Station in Arizona and performed pipeline inspections under hazardous conditions.",
     highlights: ["NDT Testing", "Commercial Diving", "Hazardous Environments", "Nuclear Safety", "Technical Analysis"]
@@ -55,6 +56,7 @@ const experiences = [
     position: "Industrial Leadership and Technical Documentation",
     company: "Management & Documentation",
     start_date: "Mid-1990's and Mid-2000's",
+    end_date: null,
     location: "14+ States",
     description: "I worked for inspection firms including HMT Inspection and TesTex. I advanced from field technician to Level II inspector and crew lead, coordinating teams ranging from small crews to full shutdown operations involving multiple shifts and dozens of personnel. At HMT, I was promoted to Operations Coordinator, managing personnel assignments, equipment logistics, compliance requirements, and scheduling across multiple job sites nationwide. I authored inspection reports for engineers and clients, combining technical writing with diagrams and visual documentation. Though informal at the time, this work constituted professional technical documentation.",
     highlights: ["Team Leadership", "Operations Management", "Technical Writing", "Logistics", "Compliance", "Multi-site Coordination"]
