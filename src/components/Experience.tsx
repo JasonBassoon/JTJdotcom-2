@@ -16,6 +16,7 @@ const experiences = [
     position: "Early Industrial Experience",
     company: "Technical Work",
     start_date: "Age 14-16",
+    end_date: null,
     location: "Sugar Land, TX",
     description: "At age fifteen, I began working in my father's gas turbine repair business. I performed hands-on industrial labor including TIG welding, grinding, sandblasting, forklift operation, assisting with turbine component repair and dye-penetrant testing (PT) of repaired turbine parts. This PT work would foreshadow my future work in the Non-destructive Testing (NDT) field. This environment required precision, adherence to safety procedures, and respect for industrial risk. The income from this job allowed me to purchase my first drum set, earned entirely through my own labor. After my father passed away, that job came to an end.",
     highlights: ["TIG Welding", "Industrial Safety", "Precision Work", "Equipment Operation", "Quality Testing"]
@@ -125,7 +126,7 @@ export default function Experience() {
                 <div className="experience-meta-item">
                   <Calendar size={16} />
                   <span>
-                    {exp.start_date} - {exp.end_date || 'Present'}
+                    {exp.end_date === null ? exp.start_date : `${exp.start_date} - ${exp.end_date || 'Present'}`}
                   </span>
                 </div>
                 {exp.location && (
