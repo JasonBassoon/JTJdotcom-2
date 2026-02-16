@@ -26,6 +26,7 @@ const experiences = [
     position: "Service and Customer-Facing Work",
     company: "Service Industry",
     start_date: "High School / Early Career",
+    end_date: null,
     location: "Meadows Place, TX and Houston, TX",
     description: "I later worked as a lifeguard and swim instructor at a community pool, responsible for safety, instruction, and emergency response. Around the same time, I worked at an AMC movie theater (Southway 6 at Gessner and Beechnut). I progressed from concessionist to usher, and eventually became the first male employee trained as a cashier at that location. At the time, ticketing was cash-only with no registers, requiring mental calculations and accurate change handling. During a projectionist union strike, I was named the build-up/tear-down guy and I was trained to assemble and disassemble film reels. I performed late-night build-up and tear-down of films, sequencing reels, trailers, headers, footers, and preparing outgoing films for shipment. Accuracy was critical, as errors directly impacted theater operations.",
     highlights: ["Emergency Response", "Public Safety", "Customer Service", "Mental Math", "Technical Precision"]
