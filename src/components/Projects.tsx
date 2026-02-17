@@ -97,7 +97,11 @@ export default function Projects() {
                   )}
                 </div>
 
-                <ProjectDocumentation projectId={project.id} projectTitle={project.title} />
+                <ProjectDocumentation
+                  key={project.id}
+                  projectId={project.id}
+                  projectTitle={project.title}
+                />
               </div>
             </article>
           ))}

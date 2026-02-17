@@ -17,6 +17,9 @@ export default function ProjectDocumentation({ projectId, projectTitle }: Projec
   const [showLoginModal, setShowLoginModal] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
+    setSteps([])
+    setExpanded(false)
     fetchDocumentation()
   }, [projectId])
 
