@@ -115,10 +115,10 @@ export default function ProjectDocumentation({ projectId, projectTitle }: Projec
                 <h4 className="step-title">{section.title}</h4>
               </div>
 
-              <div className="step-commands">
-                <div className="command-list">
+              <div className="step-content">
+                <div className="content-text">
                   {section.commands.map((cmd, idx) => (
-                    <code key={idx} className="command">{cmd}</code>
+                    <p key={idx} className="overview-text">{cmd}</p>
                   ))}
                 </div>
               </div>
