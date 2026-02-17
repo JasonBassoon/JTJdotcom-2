@@ -27,8 +27,8 @@ export default function ProjectDocumentation({ projectId, projectTitle }: Projec
         .select('*')
         .eq('project_id', projectId)
         .order('step_number', { ascending: true })
+        .throwOnError()
 
-      if (error) throw error
       setSteps(data || [])
     } catch (error) {
       console.error('Error fetching documentation:', error)
