@@ -63,7 +63,7 @@
     {
       "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
       "title": "Home SOC Lab",
-      "description": "Building a complete Security Operations Center lab environment using industry-standard KVM/QEMU virtualization on a Dell XPS 9320. This learning-first project demonstrates hands-on implementation of enterprise virtualization, network segmentation, and security infrastructure. Phase 1 and Phase 1A are complete and validated. The SOC lab foundation and hardened management baseline are operational. All further phases are intentionally paused to preserve a documented, stable baseline before expansion. The environment is designed to mirror real-world SOC operations, with future phases planned for IDS/IPS integration, SIEM deployment, and security monitoring aligned with entry-level SOC analyst requirements.",
+      "description": "Designed and implemented a complete home security lab environment with centralized logging, real-time threat detection, and comprehensive security monitoring capabilities.",
       "long_description": "Designed and implemented a complete home security lab environment with centralized logging, real-time threat detection, and comprehensive security monitoring capabilities.",
       "image_url": "",
       "tech_stack": [
@@ -84,7 +84,7 @@
       "featured": true,
       "order_index": 1,
       "created_at": "2026-01-29T21:59:44.98363+00:00",
-      "updated_at": "2026-02-17T05:39:14.446831+00:00",
+      "updated_at": "2026-02-17T05:40:57.266475+00:00",
       "security_features": [
         "Centralized Log Management",
         "Real-time Threat Detection",
