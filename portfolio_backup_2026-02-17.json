@@ -1,0 +1,489 @@
+{
+  "projects": [
+    {
+      "id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "title": "Linux System Hardening",
+      "description": "Comprehensive security hardening of Ubuntu Linux system following CIS benchmarks and security best practices",
+      "long_description": "Systematic security hardening project implementing defense-in-depth strategies including firewall configuration, privilege management, audit logging, and intrusion detection.",
+      "image_url": "",
+      "tech_stack": [
+        "Ubuntu Linux",
+        "UFW",
+        "Fail2ban",
+        "AIDE",
+        "Auditd",
+        "CIS Benchmarks",
+        "AppArmor"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "status": "completed",
+      "featured": true,
+      "order_index": 2,
+      "created_at": "2026-01-29T21:59:44.98363+00:00",
+      "updated_at": "2026-01-29T21:59:44.98363+00:00",
+      "security_features": [
+        "Firewall Configuration",
+        "Intrusion Detection",
+        "File Integrity Monitoring",
+        "Audit Logging",
+        "Privilege Management",
+        "Security Benchmarking"
+      ],
+      "completed_date": "December 2024"
+    },
+    {
+      "id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "title": "Portfolio Website",
+      "description": "Built this portfolio website using React, TypeScript, and Supabase to showcase my cybersecurity projects and technical skills",
+      "long_description": "Full-stack portfolio website with dynamic content management, featuring responsive design, database integration, and modern web development practices.",
+      "image_url": "",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Supabase",
+        "Vite",
+        "Tailwind CSS"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "status": "completed",
+      "featured": true,
+      "order_index": 3,
+      "created_at": "2026-01-29T21:59:44.98363+00:00",
+      "updated_at": "2026-01-29T21:59:44.98363+00:00",
+      "security_features": [
+        "Secure Database Design",
+        "Row Level Security",
+        "Environment Variable Protection",
+        "Input Validation"
+      ],
+      "completed_date": "December 2024"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "title": "Home SOC Lab",
+      "description": "Building a complete Security Operations Center lab environment using industry-standard KVM/QEMU virtualization on a Dell XPS 9320. This learning-first project demonstrates hands-on implementation of enterprise virtualization, network segmentation, and security infrastructure. Phase 1 and Phase 1A are complete and validated. The SOC lab foundation and hardened management baseline are operational. All further phases are intentionally paused to preserve a documented, stable baseline before expansion. The environment is designed to mirror real-world SOC operations, with future phases planned for IDS/IPS integration, SIEM deployment, and security monitoring aligned with entry-level SOC analyst requirements.",
+      "long_description": "Designed and implemented a complete home security lab environment with centralized logging, real-time threat detection, and comprehensive security monitoring capabilities.",
+      "image_url": "",
+      "tech_stack": [
+        "Wazuh",
+        "OpenSearch (Wazuh Indexer)",
+        "pfSense",
+        "Ubuntu Server",
+        "KVM",
+        "Windows Server 2022",
+        "Windows 10",
+        "Sysmon",
+        "Suricata",
+        "Kali Linux"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "status": "in_progress",
+      "featured": true,
+      "order_index": 1,
+      "created_at": "2026-01-29T21:59:44.98363+00:00",
+      "updated_at": "2026-02-17T05:39:14.446831+00:00",
+      "security_features": [
+        "Centralized Log Management",
+        "Real-time Threat Detection",
+        "Security Event Monitoring",
+        "Attack Simulation",
+        "Incident Response"
+      ],
+      "completed_date": "In Progress"
+    }
+  ],
+  "project_documentation_steps": [
+    {
+      "id": "a11c0ffd-5bd3-41bb-a2f2-25a5b3038e3e",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 1,
+      "title": "Configure Mandatory Access Control with AppArmor",
+      "commands": [
+        "sudo apt install apparmor apparmor-utils",
+        "sudo aa-enforce /etc/apparmor.d/*",
+        "sudo aa-status"
+      ],
+      "rationale": "AppArmor provides mandatory access control (MAC) that restricts programs capabilities based on per-program profiles. This implements defense-in-depth by limiting what applications can access, even if compromised.",
+      "evidence_notes": "Verified AppArmor profiles loaded and enforcing via aa-status output showing all profiles in enforce mode. Tested profile enforcement by attempting restricted file access.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "c43cc457-6968-4237-a85f-c2057afe1827",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 2,
+      "title": "Implement Automated Security Updates",
+      "commands": [
+        "sudo apt install unattended-upgrades",
+        "sudo dpkg-reconfigure -plow unattended-upgrades",
+        "sudo systemctl enable --now unattended-upgrades"
+      ],
+      "rationale": "Automated security updates ensure critical vulnerabilities are patched promptly without manual intervention. This reduces the window of exposure to known exploits while maintaining system stability through tested security updates.",
+      "evidence_notes": "Confirmed unattended-upgrades service active via systemctl status. Reviewed /var/log/unattended-upgrades/unattended-upgrades.log showing successful automatic patch installations.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "064779ed-f1dc-4970-a8c8-7b3e507a9e0f",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 3,
+      "title": "Harden SSH Configuration",
+      "commands": [
+        "sudo sed -i \"s/#PermitRootLogin prohibit-password/PermitRootLogin no/\" /etc/ssh/sshd_config",
+        "echo \"PasswordAuthentication no\" | sudo tee -a /etc/ssh/sshd_config",
+        "sudo systemctl restart sshd"
+      ],
+      "rationale": "SSH hardening prevents brute-force attacks and unauthorized access by disabling root login and password authentication. Key-based authentication provides stronger security through cryptographic verification.",
+      "evidence_notes": "Validated SSH configuration with \"sshd -T\" command. Tested authentication methods by confirming password authentication rejected and only SSH key access permitted.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "35551dce-1fb9-43d4-93d5-8e4aef775af5",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 4,
+      "title": "Configure UFW Firewall with Default Deny",
+      "commands": [
+        "sudo ufw default deny incoming",
+        "sudo ufw default allow outgoing",
+        "sudo ufw allow 22/tcp",
+        "sudo ufw enable"
+      ],
+      "rationale": "Uncomplicated Firewall (UFW) implements network-level access control following principle of least privilege. Default deny stance blocks all unauthorized inbound connections while allowing necessary services.",
+      "evidence_notes": "Confirmed firewall rules active via \"ufw status verbose\". Tested ruleset by scanning with nmap from external host, verified only SSH port accessible.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "49cc3892-b7c3-4c42-8425-2b47ac61bbe7",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 5,
+      "title": "Enable and Configure Auditd",
+      "commands": [
+        "sudo apt install auditd audispd-plugins",
+        "sudo systemctl enable --now auditd",
+        "sudo auditctl -w /etc/passwd -p wa -k identity_changes"
+      ],
+      "rationale": "Auditd provides detailed logging of security-relevant events including file access, system calls, and authentication attempts. This creates an audit trail essential for forensics and compliance requirements.",
+      "evidence_notes": "Verified auditd service running and rules loaded via \"auditctl -l\". Generated test events and confirmed logs appearing in /var/log/audit/audit.log with proper tagging.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "ab56e91a-a7ec-478f-ae21-71a73161da4c",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 6,
+      "title": "Implement File Integrity Monitoring with AIDE",
+      "commands": [
+        "sudo apt install aide",
+        "sudo aideinit",
+        "sudo mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db"
+      ],
+      "rationale": "AIDE (Advanced Intrusion Detection Environment) creates cryptographic checksums of critical system files to detect unauthorized modifications. This provides early warning of system compromise or configuration tampering.",
+      "evidence_notes": "Initialized AIDE database covering /bin, /sbin, /etc directories. Executed test check with \"aide --check\" confirming baseline established and change detection operational.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "986c5354-bc7a-4adf-bcc0-ab775ff2212a",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 7,
+      "title": "Disable Unnecessary Services and Ports",
+      "commands": [
+        "sudo systemctl disable cups",
+        "sudo systemctl disable avahi-daemon",
+        "sudo systemctl list-unit-files --state=enabled"
+      ],
+      "rationale": "Reducing attack surface by disabling unused services eliminates potential entry points for attackers. Each running service represents code that could contain vulnerabilities or be misconfigured.",
+      "evidence_notes": "Reviewed enabled services via systemctl output. Confirmed CUPS printing and Avahi mDNS services disabled and not listening on network interfaces via netstat.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "3e5ca131-1502-4e29-95b2-64ac0149766e",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 8,
+      "title": "Configure Kernel Security Parameters",
+      "commands": [
+        "echo \"kernel.dmesg_restrict=1\" | sudo tee -a /etc/sysctl.conf",
+        "echo \"kernel.kptr_restrict=2\" | sudo tee -a /etc/sysctl.conf",
+        "sudo sysctl -p"
+      ],
+      "rationale": "Kernel parameter hardening restricts access to sensitive system information and prevents information disclosure that aids attackers. These settings make exploitation more difficult by limiting kernel visibility.",
+      "evidence_notes": "Applied sysctl settings and verified persistence across reboot. Confirmed restricted dmesg access as non-root user and kernel pointer obfuscation via /proc/sys checks.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "4730665b-8113-4b96-9cd3-30f802db9037",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 9,
+      "title": "Implement Password Policies with PAM",
+      "commands": [
+        "sudo apt install libpam-pwquality",
+        "sudo sed -i \"s/# minlen = 8/minlen = 14/\" /etc/security/pwquality.conf",
+        "sudo sed -i \"s/# dcredit = 0/dcredit = -1/\" /etc/security/pwquality.conf"
+      ],
+      "rationale": "Strong password policies enforced through PAM (Pluggable Authentication Modules) prevent weak passwords that are susceptible to brute-force attacks. Complexity requirements ensure passwords meet minimum security standards.",
+      "evidence_notes": "Updated pwquality configuration with 14-character minimum and complexity requirements. Tested enforcement by attempting weak password changes, confirmed policy rejection.",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "b0c9102f-4dd9-42e9-a7cc-a3038ebb02b2",
+      "project_id": "b2c3d4e5-f6a7-4b5c-8d9e-1f2a3b4c5d6e",
+      "step_number": 10,
+      "title": "Configure Fail2Ban Intrusion Prevention",
+      "commands": [
+        "sudo apt install fail2ban",
+        "sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local",
+        "sudo systemctl enable --now fail2ban"
+      ],
+      "rationale": "Fail2Ban monitors log files for malicious activity patterns and automatically blocks attacking IP addresses. This provides active defense against brute-force attacks and automated scanning attempts.",
+      "evidence_notes": "Enabled SSH jail with 5-attempt limit and 10-minute ban period. Validated by triggering failed authentication attempts, confirmed IP blocking via \"fail2ban-client status sshd\".",
+      "created_at": "2026-01-30T05:28:36.536475+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "1ad6cb3e-85f4-468a-913a-62dae9236c59",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 1,
+      "title": "Initialize React TypeScript Project with Vite",
+      "commands": [
+        "npm create vite@latest portfolio -- --template react-ts",
+        "cd portfolio",
+        "npm install"
+      ],
+      "rationale": "Vite provides fast development experience with Hot Module Replacement and optimized production builds. TypeScript adds type safety that prevents runtime errors and improves code maintainability for professional portfolio presentation.",
+      "evidence_notes": "Verified Vite dev server running with HMR functional. Confirmed TypeScript compilation working without errors via npm run build.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "96ba981b-609e-4ed7-a45f-b40e0d2510ff",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 2,
+      "title": "Configure Tailwind CSS for Styling",
+      "commands": [
+        "npm install -D tailwindcss postcss autoprefixer",
+        "npx tailwindcss init -p",
+        "Update tailwind.config.js content paths"
+      ],
+      "rationale": "Tailwind CSS enables rapid UI development with utility-first approach while maintaining consistent design system. This creates professional, responsive layouts without custom CSS overhead.",
+      "evidence_notes": "Tested Tailwind classes rendering correctly. Confirmed production build tree-shaking removes unused styles, validating optimal bundle size.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "d108cea5-bb68-467d-8df5-2fa525d553f9",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 3,
+      "title": "Set Up Supabase Database Integration",
+      "commands": [
+        "npm install @supabase/supabase-js",
+        "Create src/lib/supabase.ts client configuration",
+        "Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env"
+      ],
+      "rationale": "Supabase provides PostgreSQL database with real-time capabilities and built-in authentication. This enables dynamic content management for projects and documentation without backend infrastructure.",
+      "evidence_notes": "Validated Supabase client connection with test query. Confirmed environment variables loaded correctly and API calls returning expected data.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "56fc92b6-5040-4c6f-96bf-6d83f76c843c",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 4,
+      "title": "Design Database Schema with RLS Policies",
+      "commands": [
+        "CREATE TABLE projects with id, title, description, tech_stack, security_features",
+        "CREATE TABLE project_documentation_steps with project_id foreign key",
+        "ALTER TABLE projects ENABLE ROW LEVEL SECURITY"
+      ],
+      "rationale": "Proper database schema design with normalized tables enables flexible content management. Row Level Security policies ensure data access control even though portfolio is public-facing.",
+      "evidence_notes": "Executed schema migrations successfully. Verified foreign key constraints and RLS policies active via Supabase dashboard.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "8967c92e-3702-4e95-90f1-af2b01d3be12",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 5,
+      "title": "Build Reusable React Components",
+      "commands": [
+        "Create Hero.tsx for landing section",
+        "Create Projects.tsx with card grid layout",
+        "Create ProjectDocumentation.tsx for expandable details"
+      ],
+      "rationale": "Component-based architecture promotes code reuse and maintainability. Each component has single responsibility making debugging and updates straightforward.",
+      "evidence_notes": "Tested component isolation and prop passing. Confirmed proper TypeScript interfaces prevent prop mismatches and improve developer experience.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "8d6443cb-c0c1-4d1f-8811-e0975343ddde",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 6,
+      "title": "Implement Responsive Design",
+      "commands": [
+        "Use Tailwind responsive prefixes (sm:, md:, lg:, xl:)",
+        "Test layouts at mobile (375px), tablet (768px), desktop (1440px)",
+        "Add CSS Grid for project cards with auto-fit minmax"
+      ],
+      "rationale": "Responsive design ensures portfolio displays correctly across all devices. Mobile-first approach prioritizes performance and usability on constrained devices while progressively enhancing for larger screens.",
+      "evidence_notes": "Validated responsive breakpoints using browser DevTools. Tested navigation, card layouts, and typography scaling across device sizes.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "87806e95-f647-4e1d-97e4-48443c11260a",
+      "project_id": "c3d4e5f6-a7b8-4c5d-9e0f-2a3b4c5d6e7f",
+      "step_number": 7,
+      "title": "Optimize Performance and Build",
+      "commands": [
+        "npm run build",
+        "Analyze bundle size with vite-bundle-visualizer",
+        "Configure production environment variables"
+      ],
+      "rationale": "Production optimization reduces load times and improves user experience. Build analysis identifies large dependencies and opportunities for code splitting.",
+      "evidence_notes": "Confirmed production build completes without errors. Validated output bundle sizes reasonable with proper tree-shaking of unused Tailwind classes.",
+      "created_at": "2026-01-30T05:29:03.937472+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "609fb9a6-0d5f-4602-a3ac-8a938ba546a9",
+      "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "step_number": -2,
+      "title": "Home SOC Lab (Active Deployment)",
+      "commands": [
+        "The lab runs on an isolated 10.10.10.0/24 network behind pfSense. All systems route through the firewall before reaching internal services."
+      ],
+      "rationale": "I built and maintain a segmented home SOC lab to gain hands-on experience with SIEM deployment, endpoint telemetry, and detection troubleshooting.",
+      "evidence_notes": "This is an active operational environment with real infrastructure and working telemetry pipelines. The lab demonstrates hands-on security operations and SIEM management skills.",
+      "created_at": "2026-02-16T20:32:50.803102+00:00",
+      "is_overview": true
+    },
+    {
+      "id": "190c7307-c9e5-4d71-a7e6-1cbe2f83d75f",
+      "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "step_number": -1,
+      "title": "Current Infrastructure (Operational)",
+      "commands": [
+        "pfSense CE 2.7.2 – Gateway / firewall (10.10.10.1)",
+        "Ubuntu Server 22.04 – Wazuh 4.14 Manager, Indexer, Dashboard",
+        "Ubuntu Endpoint – Active Wazuh agent reporting to SIEM",
+        "Kali Linux – Active Wazuh agent + attack simulation platform",
+        "Windows Server 2022 – Active Directory Domain Controller (domain: soc.lab)",
+        "Upstream NAT via libvirt (192.168.122.0/24)"
+      ],
+      "rationale": "Complete operational infrastructure with network segmentation, SIEM deployment, and Active Directory services.",
+      "evidence_notes": "All listed systems are deployed and operational. Network routing validated through pfSense. SIEM stack fully functional.",
+      "created_at": "2026-02-16T20:32:50.803102+00:00",
+      "is_overview": true
+    },
+    {
+      "id": "7bb2ab38-aac7-4247-87f1-125fb7793c98",
+      "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "step_number": 1,
+      "title": "What Is Working Right Now",
+      "commands": [
+        "✔ Wazuh Manager, Indexer, and Dashboard installed and operational",
+        "✔ OpenSearch security initialized and reconfigured after upgrade",
+        "✔ TLS certificates regenerated and validated",
+        "✔ Inter-component authentication restored after upgrade issues",
+        "✔ Dashboard accessible securely over HTTPS",
+        "✔ Ubuntu and Kali agents actively reporting telemetry",
+        "✔ Active Directory deployed and DNS service records validated"
+      ],
+      "rationale": "Endpoint logs from Linux systems are flowing into Wazuh and visible in the dashboard.",
+      "evidence_notes": "All core SIEM components are operational with active telemetry ingestion from Linux endpoints. Security properly configured with TLS encryption.",
+      "created_at": "2026-02-16T20:32:50.803102+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "b08f72b4-42d0-4722-8846-f09445a80b19",
+      "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "step_number": 2,
+      "title": "Troubleshooting & Upgrade Experience",
+      "commands": [
+        "Rebuilt TLS certificates and admin keys",
+        "Reinitialized indexer security",
+        "Corrected OpenSearch authentication failures",
+        "Resolved dashboard login failures",
+        "Validated service communication using curl and systemctl checks",
+        "Restored trust relationships between Manager, Indexer, and Dashboard"
+      ],
+      "rationale": "During the original deployment (4.8) and later upgrade to 4.14: This required diagnosing service-level authentication and certificate issues across the SIEM stack.",
+      "evidence_notes": "Real-world troubleshooting experience gained by resolving authentication failures, certificate trust issues, and inter-component communication problems during Wazuh upgrades.",
+      "created_at": "2026-02-16T20:32:50.803102+00:00",
+      "is_overview": false
+    },
+    {
+      "id": "2635e07f-86d0-415f-b1b7-35b98a5c4536",
+      "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "step_number": 3,
+      "title": "Next Phase (Planned)",
+      "commands": [
+        "Install Wazuh agent on Windows Server",
+        "Deploy Sysmon for enhanced Windows telemetry",
+        "Create custom detection rules",
+        "Enable Suricata IDS in pfSense",
+        "Conduct structured attack simulations",
+        "Tune alerts and reduce false positives"
+      ],
+      "rationale": "Planned expansion to include Windows endpoint telemetry, network-based intrusion detection, and structured attack simulation.",
+      "evidence_notes": "These capabilities are planned for future implementation to expand the lab detection capabilities beyond the current Linux endpoint monitoring.",
+      "created_at": "2026-02-16T20:32:50.803102+00:00",
+      "is_overview": false
+    }
+  ],
+  "experiences": [],
+  "learning_milestones": [
+    {
+      "id": "2ad1f085-26fc-4a98-8c41-58cb47347ae2",
+      "category": "security_plus",
+      "title": "CompTIA Security+ Certification",
+      "description": "Studying for the CompTIA Security+ exam to validate foundational cybersecurity knowledge and skills",
+      "progress_percentage": 75,
+      "status": "in_progress",
+      "last_updated": "2026-01-29T21:59:54.615199+00:00",
+      "metadata": {},
+      "created_at": "2026-01-29T21:59:54.615199+00:00"
+    },
+    {
+      "id": "232b1c6a-6c72-4de5-8f29-b762e2f5ff82",
+      "category": "tryhackme",
+      "title": "TryHackMe Training",
+      "description": "Gaining real-world cybersecurity skills through hands-on training rooms and challenges on TryHackMe.com",
+      "progress_percentage": 25,
+      "status": "in_progress",
+      "last_updated": "2026-01-29T21:59:54.615199+00:00",
+      "metadata": {},
+      "created_at": "2026-01-29T21:59:54.615199+00:00"
+    },
+    {
+      "id": "aa8c6c1b-e60b-4b0d-bb51-b3fb846e96aa",
+      "category": "python",
+      "title": "CS50 Python Programming",
+      "description": "Learning Python programming fundamentals through Harvard's CS50 course on EdX.org",
+      "progress_percentage": 40,
+      "status": "in_progress",
+      "last_updated": "2026-01-29T21:59:54.615199+00:00",
+      "metadata": {},
+      "created_at": "2026-01-29T21:59:54.615199+00:00"
+    },
+    {
+      "id": "e00dc1de-f604-4437-964d-307dfd38b1eb",
+      "category": "aws",
+      "title": "AWS Cloud Training",
+      "description": "Taking advantage of free AWS training to build cloud computing skills and avoid cloud ignorance",
+      "progress_percentage": 20,
+      "status": "in_progress",
+      "last_updated": "2026-01-29T21:59:54.615199+00:00",
+      "metadata": {},
+      "created_at": "2026-01-29T21:59:54.615199+00:00"
+    }
+  ]
+}

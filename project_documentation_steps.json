@@ -256,164 +256,89 @@
     "is_overview": false
   },
   {
-    "id": "8ab66a1c-9be3-4dda-a9af-4b0170283247",
+    "id": "609fb9a6-0d5f-4602-a3ac-8a938ba546a9",
     "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
     "step_number": -2,
-    "title": "Project Overview: Learning-First SOC Lab",
+    "title": "Home SOC Lab (Active Deployment)",
     "commands": [
-      "Host System: Dell XPS 9320 (Intel i7-1260P, 32GB RAM, 1TB NVMe)",
-      "Hypervisor: KVM/QEMU with virt-manager on Ubuntu 24.04 LTS",
-      "Management Philosophy: Change-control discipline with documented baselines",
-      "Current Status: Phase 1 & 1A COMPLETE - Wazuh infrastructure operational and validated"
+      "The lab runs on an isolated 10.10.10.0/24 network behind pfSense. All systems route through the firewall before reaching internal services."
     ],
-    "rationale": "This is a learning-first project designed to demonstrate hands-on implementation of enterprise security infrastructure. The approach emphasizes methodical baseline documentation before expansion - deliberately pausing after each validated phase rather than rushing to deploy everything at once. This mirrors real-world SOC operations where stability and documentation take precedence over feature velocity.",
-    "evidence_notes": "Phase 1 and Phase 1A are complete and operational. All subsequent phases (agent deployment, integration, monitoring) are intentionally deferred to preserve a stable, documented baseline. The environment is designed for learning SOC analyst skills including SIEM operation, log analysis, and security event correlation.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
+    "rationale": "I built and maintain a segmented home SOC lab to gain hands-on experience with SIEM deployment, endpoint telemetry, and detection troubleshooting.",
+    "evidence_notes": "This is an active operational environment with real infrastructure and working telemetry pipelines. The lab demonstrates hands-on security operations and SIEM management skills.",
+    "created_at": "2026-02-16T20:32:50.803102+00:00",
     "is_overview": true
   },
   {
-    "id": "47c6072f-4a9e-4f3e-9284-c0503eacc5ee",
+    "id": "190c7307-c9e5-4d71-a7e6-1cbe2f83d75f",
     "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
     "step_number": -1,
-    "title": "Network Architecture Baseline",
+    "title": "Current Infrastructure (Operational)",
     "commands": [
-      "Management Network: 192.168.100.0/24 (isolated, security-hardened)",
-      "Production Network: 192.168.1.0/24 (monitored endpoints)",
-      "Wazuh Manager: 192.168.100.10 (Ubuntu 24.04 LTS, 4 vCPU, 8GB RAM)",
-      "Network Isolation: Separate VLANs for management vs monitored systems"
+      "pfSense CE 2.7.2 – Gateway / firewall (10.10.10.1)",
+      "Ubuntu Server 22.04 – Wazuh 4.14 Manager, Indexer, Dashboard",
+      "Ubuntu Endpoint – Active Wazuh agent reporting to SIEM",
+      "Kali Linux – Active Wazuh agent + attack simulation platform",
+      "Windows Server 2022 – Active Directory Domain Controller (domain: soc.lab)",
+      "Upstream NAT via libvirt (192.168.122.0/24)"
     ],
-    "rationale": "The network architecture implements defense-in-depth with isolated management infrastructure. The Wazuh Manager resides on a hardened management network (192.168.100.0/24) separate from production endpoints. This design mirrors enterprise SOC deployments where security infrastructure is isolated from monitored systems.",
-    "evidence_notes": "Network architecture documented and validated. Management network secured with restrictive firewall rules. Wazuh Manager deployed on isolated subnet with controlled access. Architecture designed for future expansion with additional sensors, agents, and security tools.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
+    "rationale": "Complete operational infrastructure with network segmentation, SIEM deployment, and Active Directory services.",
+    "evidence_notes": "All listed systems are deployed and operational. Network routing validated through pfSense. SIEM stack fully functional.",
+    "created_at": "2026-02-16T20:32:50.803102+00:00",
     "is_overview": true
   },
   {
-    "id": "c6c12070-1507-4fb9-bace-a448516ae9be",
+    "id": "7bb2ab38-aac7-4247-87f1-125fb7793c98",
     "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
     "step_number": 1,
-    "title": "Phase 1: Deploy Wazuh Infrastructure (COMPLETED)",
+    "title": "What Is Working Right Now",
     "commands": [
-      "curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a",
-      "sudo systemctl status wazuh-manager",
-      "sudo systemctl status wazuh-indexer",
-      "sudo systemctl status wazuh-dashboard"
+      "✔ Wazuh Manager, Indexer, and Dashboard installed and operational",
+      "✔ OpenSearch security initialized and reconfigured after upgrade",
+      "✔ TLS certificates regenerated and validated",
+      "✔ Inter-component authentication restored after upgrade issues",
+      "✔ Dashboard accessible securely over HTTPS",
+      "✔ Ubuntu and Kali agents actively reporting telemetry",
+      "✔ Active Directory deployed and DNS service records validated"
     ],
-    "rationale": "Wazuh all-in-one installation provides the complete SIEM stack: Manager (analysis engine), Indexer (data storage/search), and Dashboard (visualization interface). This deployment establishes the foundational security monitoring platform for the entire SOC lab.",
-    "evidence_notes": "COMPLETED AND VALIDATED: Wazuh Manager, Indexer, and Dashboard successfully deployed and operational. Services confirmed running. Dashboard accessible at https://192.168.100.10. Admin credentials secured. All components healthy and responding.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
+    "rationale": "Endpoint logs from Linux systems are flowing into Wazuh and visible in the dashboard.",
+    "evidence_notes": "All core SIEM components are operational with active telemetry ingestion from Linux endpoints. Security properly configured with TLS encryption.",
+    "created_at": "2026-02-16T20:32:50.803102+00:00",
     "is_overview": false
   },
   {
-    "id": "2fe9b131-f84b-46f7-a71c-3b34f14e6476",
+    "id": "b08f72b4-42d0-4722-8846-f09445a80b19",
     "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
     "step_number": 2,
-    "title": "Phase 1A: Initialize Security & Validate Baseline (COMPLETED)",
+    "title": "Troubleshooting & Upgrade Experience",
     "commands": [
-      "sudo tar -xvf wazuh-install-files.tar",
-      "Secure admin credentials in password manager",
-      "Verify dashboard authentication and HTTPS",
-      "Confirm all services operational and logging",
-      "Document baseline configuration before expansion"
+      "Rebuilt TLS certificates and admin keys",
+      "Reinitialized indexer security",
+      "Corrected OpenSearch authentication failures",
+      "Resolved dashboard login failures",
+      "Validated service communication using curl and systemctl checks",
+      "Restored trust relationships between Manager, Indexer, and Dashboard"
     ],
-    "rationale": "Security initialization establishes the hardened baseline before any expansion. This phase extracts and secures credentials, validates encrypted communications, and confirms all components are operational. Most critically, it documents the known-good baseline state - a snapshot of working infrastructure before adding complexity.",
-    "evidence_notes": "COMPLETED AND VALIDATED: Security credentials extracted and secured. Dashboard authentication verified with strong passwords. HTTPS confirmed operational. All services logging correctly. Baseline state documented. This represents a stable, validated checkpoint before agent deployment.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
+    "rationale": "During the original deployment (4.8) and later upgrade to 4.14: This required diagnosing service-level authentication and certificate issues across the SIEM stack.",
+    "evidence_notes": "Real-world troubleshooting experience gained by resolving authentication failures, certificate trust issues, and inter-component communication problems during Wazuh upgrades.",
+    "created_at": "2026-02-16T20:32:50.803102+00:00",
     "is_overview": false
   },
   {
-    "id": "f54a18c1-a009-462d-a42f-b47976b4784f",
+    "id": "2635e07f-86d0-415f-b1b7-35b98a5c4536",
     "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
     "step_number": 3,
-    "title": "Phase 2: Deploy Wazuh Agents on Windows Systems (PLANNED)",
+    "title": "Next Phase (Planned)",
     "commands": [
-      "Download Wazuh Windows agent installer",
-      "Install on Windows Server 2022 and Windows 10 endpoints",
-      "Configure agent to report to 192.168.100.10",
-      "Verify agent registration and connectivity in Wazuh Dashboard"
+      "Install Wazuh agent on Windows Server",
+      "Deploy Sysmon for enhanced Windows telemetry",
+      "Create custom detection rules",
+      "Enable Suricata IDS in pfSense",
+      "Conduct structured attack simulations",
+      "Tune alerts and reduce false positives"
     ],
-    "rationale": "Windows agent deployment extends monitoring to endpoints. Agents collect security events, system logs, and file changes from Windows systems. This phase enables visibility into endpoint activities - the foundation for threat detection and incident response.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Not yet implemented to preserve validated baseline. Will deploy agents only after baseline is fully documented and backup procedures established. This disciplined approach prevents rushing into expansion before the foundation is solid.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
-    "is_overview": false
-  },
-  {
-    "id": "de4aa5c3-fc2e-45f2-99bf-4339fde8fe29",
-    "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-    "step_number": 4,
-    "title": "Phase 3: Deploy Sysmon for Enhanced Windows Monitoring (PLANNED)",
-    "commands": [
-      "Download Sysmon and SwiftOnSecurity config",
-      "Install Sysmon on Windows endpoints",
-      "Configure Wazuh to ingest Sysmon events",
-      "Validate process creation and network connection logging"
-    ],
-    "rationale": "Sysmon provides deep Windows system telemetry including process creation, network connections, and file operations. Integration with Wazuh enables advanced threat hunting and forensic analysis capabilities critical for detecting sophisticated attacks.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Future phase after agent deployment. Requires functional Wazuh agents as prerequisite. Not started to maintain change-control discipline.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
-    "is_overview": false
-  },
-  {
-    "id": "aa5839c0-a031-4f3a-a486-8523d901b593",
-    "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-    "step_number": 5,
-    "title": "Phase 4: Integrate pfSense Firewall Logging (PLANNED)",
-    "commands": [
-      "Configure pfSense syslog forwarding to Wazuh Manager",
-      "Set up Wazuh decoder for pfSense log format",
-      "Enable firewall rules logging",
-      "Verify firewall events appearing in Wazuh Dashboard"
-    ],
-    "rationale": "pfSense integration adds network-level visibility by forwarding firewall logs to Wazuh. This enables correlation between network traffic patterns and endpoint activities - critical for identifying lateral movement and C2 communications.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Future phase requiring stable agent deployment. Not started to preserve baseline state.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
-    "is_overview": false
-  },
-  {
-    "id": "a206b023-5be0-4689-8a95-dc550976400e",
-    "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-    "step_number": 6,
-    "title": "Phase 5: Deploy Suricata IDS for Network Detection (PLANNED)",
-    "commands": [
-      "Deploy Debian VM as network sensor",
-      "Install Suricata IDS with Emerging Threats rules",
-      "Configure Suricata to forward alerts to Wazuh",
-      "Test detection with known attack signatures"
-    ],
-    "rationale": "Suricata provides signature-based network intrusion detection. Integration with Wazuh enables correlation of network-level threats with endpoint activities, significantly improving detection accuracy and reducing false positives.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Future phase after network monitoring baseline established. Not started.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
-    "is_overview": false
-  },
-  {
-    "id": "b97dffa5-a397-4f02-84b4-b5bb643041b0",
-    "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-    "step_number": 7,
-    "title": "Phase 6: Configure File Integrity Monitoring (PLANNED)",
-    "commands": [
-      "Configure Wazuh FIM for critical Windows directories",
-      "Monitor System32, Program Files, user startup folders",
-      "Set up real-time alerts for unauthorized changes",
-      "Establish baseline of legitimate file states"
-    ],
-    "rationale": "File Integrity Monitoring detects unauthorized changes to critical system files and configurations. Essential for identifying malware persistence mechanisms, configuration tampering, and privilege escalation attempts.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Future phase after stable agent deployment. Not started.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
-    "is_overview": false
-  },
-  {
-    "id": "9fe0f1ff-69a1-451d-a249-51b5a6de1bdb",
-    "project_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
-    "step_number": 8,
-    "title": "Phase 7: Implement Attack Simulation & Response Testing (PLANNED)",
-    "commands": [
-      "Install Atomic Red Team framework",
-      "Execute MITRE ATT&CK technique simulations",
-      "Verify Wazuh detection and alerting",
-      "Document detection gaps and tune rules"
-    ],
-    "rationale": "Atomic Red Team provides standardized attack simulations aligned with MITRE ATT&CK. Regular testing validates detection capabilities and ensures the SOC lab effectively identifies real-world attack techniques. Critical for demonstrating practical threat detection skills.",
-    "evidence_notes": "STATUS: INTENTIONALLY DEFERRED. Final validation phase after all monitoring components operational. Not started.",
-    "created_at": "2026-01-30T20:52:49.088371+00:00",
+    "rationale": "Planned expansion to include Windows endpoint telemetry, network-based intrusion detection, and structured attack simulation.",
+    "evidence_notes": "These capabilities are planned for future implementation to expand the lab detection capabilities beyond the current Linux endpoint monitoring.",
+    "created_at": "2026-02-16T20:32:50.803102+00:00",
     "is_overview": false
   }
 ]
