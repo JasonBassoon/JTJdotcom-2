@@ -9,15 +9,18 @@ export type Project = {
   id: string
   title: string
   description: string
+  long_description: string | null
   tech_stack: string[]
   live_url: string | null
   github_url: string | null
   image_url: string | null
   security_features: string[]
   completed_date: string
+  status: string
   featured: boolean
   order_index: number
   created_at: string
+  updated_at: string
 }
 
 export type LearningMilestone = {

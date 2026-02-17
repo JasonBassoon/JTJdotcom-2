@@ -55,8 +55,17 @@ export default function Projects() {
                 </div>
               )}
               <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="project-title">{project.title}</h3>
+                  {project.status === 'in_progress' && (
+                    <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
+                      In Progress
+                    </span>
+                  )}
+                </div>
+                <p className="project-description">
+                  {project.long_description || project.description}
+                </p>
 
                 {project.security_features.length > 0 && (
                   <div className="project-features">
