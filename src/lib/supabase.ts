@@ -65,3 +65,28 @@ export type Experience = {
   order_index: number
   created_at: string
 }
+
+export type HeroStat = {
+  icon: string
+  number: string
+  label: string
+}
+
+export type AboutInfo = {
+  id: string
+  name: string
+  title: string
+  subtitle: string
+  bio: string
+  hero_bio: string
+  email: string | null
+  github_url: string | null
+  linkedin_url: string | null
+  hero_stats: HeroStat[]
+  hero_cta_primary_text: string
+  hero_cta_primary_link: string
+  hero_cta_secondary_text: string
+  hero_cta_secondary_link: string
+  created_at: string
+  updated_at: string
+}

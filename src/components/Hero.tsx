@@ -1,4 +1,66 @@
+import { useEffect, useState } from 'react'
+import { supabase, type AboutInfo } from '../lib/supabase'
+
 export default function Hero() {
+  const [aboutInfo, setAboutInfo] = useState<AboutInfo | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchAboutInfo()
+  }, [])
+
+  async function fetchAboutInfo() {
+    try {
+      const { data, error } = await supabase
+        .from('about_info')
+        .select('*')
+        .maybeSingle()
+
+      if (error) throw error
+      setAboutInfo(data)
+    } catch (error) {
+      console.error('Error fetching about info:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <section className="hero">
+        <div className="hero-background">
+          <div className="animated-gradient"></div>
+        </div>
+        <div className="container">
+          <div className="loading">Loading...</div>
+        </div>
+      </section>
+    )
+  }
+
+  if (!aboutInfo) {
+    return (
+      <section className="hero">
+        <div className="hero-background">
+          <div className="animated-gradient"></div>
+        </div>
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Hi, I'm <span className="gradient-text">Jason</span>
+            </h1>
+            <h2 className="hero-subtitle-large">
+              Aspiring Cybersecurity Professional
+            </h2>
+            <p className="hero-subtitle">
+              Career-changer committed to continuous learning and building real-world security skills.
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="hero">
       <div className="hero-background">
@@ -7,43 +69,34 @@ export default function Hero() {
       <div className="container">
         <div className="hero-content">
           <h1 className="hero-title">
-            Hi, I'm <span className="gradient-text">Jason</span>
+            Hi, I'm <span className="gradient-text">{aboutInfo.name}</span>
           </h1>
           <h2 className="hero-subtitle-large">
-            Aspiring Cybersecurity Professional
+            {aboutInfo.subtitle}
           </h2>
           <p className="hero-subtitle">
-            Career-changer committed to continuous learning and building real-world security skills.
-            Currently pursuing CompTIA Security+ certification while gaining hands-on experience
-            through TryHackMe, CS50 Python, and AWS training.
+            {aboutInfo.hero_bio}
           </p>
           <div className="hero-cta">
-            <a href="#projects" className="btn btn-primary">View Projects</a>
-            <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+            <a href={aboutInfo.hero_cta_primary_link} className="btn btn-primary">
+              {aboutInfo.hero_cta_primary_text}
+            </a>
+            <a href={aboutInfo.hero_cta_secondary_link} className="btn btn-secondary">
+              {aboutInfo.hero_cta_secondary_text}
+            </a>
           </div>
         </div>
-        <div className="hero-stats">
-          <div className="stat-card">
-            <div className="stat-icon">🛡️</div>
-            <div className="stat-number">Security+</div>
-            <div className="stat-label">In Progress</div>
+        {aboutInfo.hero_stats && aboutInfo.hero_stats.length > 0 && (
+          <div className="hero-stats">
+            {aboutInfo.hero_stats.map((stat, index) => (
+              <div key={index} className="stat-card">
+                <div className="stat-icon">{stat.icon}</div>
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+            ))}
           </div>
-          <div className="stat-card">
-            <div className="stat-icon">🎯</div>
-            <div className="stat-number">TryHackMe</div>
-            <div className="stat-label">Hands-On Training</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon">🐍</div>
-            <div className="stat-number">CS50 Python</div>
-            <div className="stat-label">Programming</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon">☁️</div>
-            <div className="stat-number">AWS</div>
-            <div className="stat-label">Cloud Skills</div>
-          </div>
-        </div>
+        )}
       </div>
     </section>
   )
