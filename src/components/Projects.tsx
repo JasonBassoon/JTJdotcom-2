@@ -18,7 +18,10 @@ export default function Projects() {
         .order('order_index', { ascending: true })
         .order('completed_date', { ascending: false })
 
-      if (error) throw error
+      if (error) {
+        console.error('Error fetching projects:', error)
+        throw error
+      }
       setProjects(data || [])
     } catch (error) {
       console.error('Error fetching projects:', error)

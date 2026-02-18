@@ -23,7 +23,10 @@ export default function Learning() {
         .select('*')
         .order('last_updated', { ascending: false })
 
-      if (error) throw error
+      if (error) {
+        console.error('Error fetching learning milestones:', error)
+        throw error
+      }
       setMilestones(data || [])
     } catch (error) {
       console.error('Error fetching learning milestones:', error)

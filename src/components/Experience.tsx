@@ -20,17 +20,25 @@ export default function Experience() {
 
   useEffect(() => {
     async function fetchExperiences() {
-      const { data, error } = await supabase
-        .from('experiences')
-        .select('*')
-        .order('order_index')
+      try {
+        const { data, error } = await supabase
+          .from('experiences')
+          .select('*')
+          .order('order_index')
 
-      if (error) {
+        if (error) {
+          console.error('Error fetching experiences:', error)
+          throw error
+        }
+
+        if (data) {
+          setExperiences(data)
+        }
+      } catch (error) {
         console.error('Error fetching experiences:', error)
-      } else if (data) {
-        setExperiences(data)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetchExperiences()

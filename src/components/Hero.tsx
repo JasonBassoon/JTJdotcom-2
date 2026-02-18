@@ -16,7 +16,10 @@ export default function Hero() {
         .select('*')
         .maybeSingle()
 
-      if (error) throw error
+      if (error) {
+        console.error('Error fetching about info:', error)
+        throw error
+      }
       setAboutInfo(data)
     } catch (error) {
       console.error('Error fetching about info:', error)
