@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Hero from './components/Hero'
+import WhyCybersecurity from './components/WhyCybersecurity'
 import Projects from './components/Projects'
 import Learning from './components/Learning'
 import Experience from './components/Experience'
@@ -40,6 +41,7 @@ function App() {
         <div id="hero">
           <Hero />
         </div>
+        <WhyCybersecurity />
         <Projects />
         <Learning />
         <Experience />
