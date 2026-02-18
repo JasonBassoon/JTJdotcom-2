@@ -79,7 +79,7 @@ export default function Experience() {
                 <div className="experience-meta-item">
                   <Calendar size={16} />
                   <span>
-                    {exp.end_date === null ? exp.start_date : `${exp.start_date} - ${exp.end_date || 'Present'}`}
+                    {exp.end_date ? `${exp.start_date} - ${exp.end_date}` : exp.start_date}
                   </span>
                 </div>
                 {exp.location && (
