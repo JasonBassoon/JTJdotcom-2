@@ -21,12 +21,10 @@ export default function Experience() {
   useEffect(() => {
     async function fetchExperiences() {
       try {
-        const timestamp = new Date().getTime()
         const { data, error } = await supabase
           .from('experiences')
           .select('*')
           .order('order_index', { ascending: true })
-          .limit(100)
 
         if (error) {
           console.error('Error fetching experiences:', error)
@@ -34,7 +32,6 @@ export default function Experience() {
         }
 
         if (data) {
-          console.log(`[${timestamp}] Fetched ${data.length} experiences`)
           setExperiences(data)
         }
       } catch (error) {
@@ -45,18 +42,6 @@ export default function Experience() {
     }
 
     fetchExperiences()
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        fetchExperiences()
-      }
-    }
-
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
-    }
   }, [])
   if (loading) {
     return (

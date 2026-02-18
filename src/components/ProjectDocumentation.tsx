@@ -25,7 +25,7 @@ export default function ProjectDocumentation({ projectId, projectTitle }: Projec
 
   async function fetchDocumentation() {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('project_documentation_steps')
         .select('*')
         .eq('project_id', projectId)
