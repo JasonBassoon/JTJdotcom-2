@@ -48,7 +48,7 @@ function App() {
 
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2025 JasonsTechJourney.com</p>
+          <p>&copy; {new Date().getFullYear()} JasonsTechJourney.com</p>
         </div>
       </footer>
     </div>
